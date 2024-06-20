@@ -2,4 +2,4 @@ flask
 flask-sqlalchemy
 flask-restful
 flask-marshmallow
-marshmallow- sqlalchemy
+marshmallow-sqlalchemy
