@@ -5,8 +5,8 @@ Ce projet est une API REST développée avec Flask en Python. Il utilise SQLAlch
 
 ## Installation
 
-1. Clonez ce dépôt sur votre machine locale :
+1. Clonez ce dépôt :
 
-   git clone https://github.com/Patrick-NII/API_rest_Flask.git
+git clone https://github.com/Patrick-NII/API_rest_Flask.git
 
 
