@@ -1,10 +1,12 @@
 from flask import Flask
 from models import db, Product
+from schemas import ma
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///products.db'
 
 db.init_app(app)
+ma.init_app(app)
 
 with app.app_context():
     
