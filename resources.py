@@ -9,6 +9,7 @@ class ProductResources(Resource):
     
     product_schema = ProductSchema()
     product_list_schema = ProductSchema(many=True)
+    product_patch_schema = ProductSchema(partial=True)
     
     def get(self, product_id=None):
         if product_id:
@@ -36,6 +37,20 @@ class ProductResources(Resource):
     def put(self, product_id):
         try:
             product_data = self.product_schema.load(request.json)
+        except ValidationError as err:
+            return {"message":"ValidationError", "errors": err.messages}, 400
+        
+        product = Product.query.get_or_404(product_id)
+        for key, value in product_data.items():
+            if value is not None:
+                setattr(product, key, value)
+        
+        db.session.commit()
+        return self.product_schema.dump(product)
+    
+    def patch(self, product_id):
+        try:
+            product_data = self.product_patch_schema.load(request.json)
         except ValidationError as err:
             return {"message":"ValidationError", "errors": err.messages}, 400
         
