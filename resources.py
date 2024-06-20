@@ -61,3 +61,9 @@ class ProductResources(Resource):
         
         db.session.commit()
         return self.product_schema.dump(product)
+    
+    def delete(self, product_id):
+        product = Product.query.get_or_404(product_id)
+        db.session.delete(product)
+        db.session.commit()
+        return '', 204
