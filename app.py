@@ -11,7 +11,7 @@ db.init_app(app)
 ma.init_app(app)
 
 api = Api(app)
-api.add_resource(ProductResources, '/product', '/product/<int:product_id>')
+api.add_resource(ProductResources, '/products', '/products/<int:product_id>')
 
 with app.app_context():
     
